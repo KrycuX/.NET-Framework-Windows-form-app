@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProdukcjaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BazaZamowien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idZamowienia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DaneZamawiajacego">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="50" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
+    <Property Name="NrTel" Type="int" />
+    <Property Name="Miasto" Type="varchar" MaxLength="50" />
+    <Property Name="Ulica" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.ListaMebli_Zamowienie' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ListaMebli_Zamowienie">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idMebla" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idMebla" Type="int" Nullable="false" />
+    <Property Name="Kolor" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Mebel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Nazwa" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_Produktu" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PlanPracy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idZamowienia" Type="int" />
+    <Property Name="idPlanu" Type="int" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Imię" Type="varchar" MaxLength="50" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="50" />
+    <Property Name="Stanowisko" Type="varchar" MaxLength="50" />
+    <Property Name="Login" Type="varchar" MaxLength="50" />
+    <Property Name="Haslo" Type="varchar" MaxLength="50" />
+    <Property Name="Zmiany" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Zamówienie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idZamawiający" Type="int" Nullable="false" />
+    <Property Name="idLista" Type="int" Nullable="false" />
+    <Property Name="DataRealizacji" Type="date" />
+    <Property Name="wPlanie" Type="varchar" MaxLength="50" />
+    <Property Name="Kod_Zlecenia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Zmiany">
+    <Key>
+      <PropertyRef Name="idZmiany" />
+    </Key>
+    <Property Name="idZmiany" Type="int" Nullable="false" />
+    <Property Name="idKierownika" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BazaZamowien_Zamówienie">
+    <End Role="Zamówienie" Type="Self.Zamówienie" Multiplicity="1" />
+    <End Role="BazaZamowien" Type="Self.BazaZamowien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamówienie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BazaZamowien">
+        <PropertyRef Name="idZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ListaMebli_Zamowienie_Mebel">
+    <End Role="Mebel" Type="Self.Mebel" Multiplicity="1" />
+    <End Role="ListaMebli_Zamowienie" Type="Self.ListaMebli_Zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mebel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ListaMebli_Zamowienie">
+        <PropertyRef Name="idMebla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanPracy_Zamówienie">
+    <End Role="Zamówienie" Type="Self.Zamówienie" Multiplicity="0..1" />
+    <End Role="PlanPracy" Type="Self.PlanPracy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamówienie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlanPracy">
+        <PropertyRef Name="idZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamówienie_DaneZamawiajacego">
+    <End Role="DaneZamawiajacego" Type="Self.DaneZamawiajacego" Multiplicity="1" />
+    <End Role="Zamówienie" Type="Self.Zamówienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaneZamawiajacego">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zamówienie">
+        <PropertyRef Name="idZamawiający" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zmiany_Pracownicy">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Zmiany" Type="Self.Zmiany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zmiany">
+        <PropertyRef Name="idKierownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProdukcjaModelStoreContainer">
+    <EntitySet Name="BazaZamowien" EntityType="Self.BazaZamowien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DaneZamawiajacego" EntityType="Self.DaneZamawiajacego" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mebel" EntityType="Self.Mebel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlanPracy" EntityType="Self.PlanPracy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zamówienie" EntityType="Self.Zamówienie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zmiany" EntityType="Self.Zmiany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListaMebli_Zamowienie" EntityType="Self.ListaMebli_Zamowienie" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ListaMebli_Zamowienie].[id] AS [id], 
+    [ListaMebli_Zamowienie].[idMebla] AS [idMebla], 
+    [ListaMebli_Zamowienie].[Kolor] AS [Kolor]
+    FROM [dbo].[ListaMebli_Zamowienie] AS [ListaMebli_Zamowienie]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BazaZamowien_Zamówienie" Association="Self.FK_BazaZamowien_Zamówienie">
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+      <End Role="BazaZamowien" EntitySet="BazaZamowien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ListaMebli_Zamowienie_Mebel" Association="Self.FK_ListaMebli_Zamowienie_Mebel">
+      <End Role="Mebel" EntitySet="Mebel" />
+      <End Role="ListaMebli_Zamowienie" EntitySet="ListaMebli_Zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanPracy_Zamówienie" Association="Self.FK_PlanPracy_Zamówienie">
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+      <End Role="PlanPracy" EntitySet="PlanPracy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamówienie_DaneZamawiajacego" Association="Self.FK_Zamówienie_DaneZamawiajacego">
+      <End Role="DaneZamawiajacego" EntitySet="DaneZamawiajacego" />
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zmiany_Pracownicy" Association="Self.FK_Zmiany_Pracownicy">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Zmiany" EntitySet="Zmiany" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

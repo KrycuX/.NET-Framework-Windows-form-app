@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d6e56f41a044b91b4138aa8fb5850be" Name="Diagram1">
+        <EntityTypeShape EntityType="ProdukcjaModel.BazaZamowien" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.DaneZamawiajacego" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.ListaMebli_Zamowienie" Width="1.5" PointX="6.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.Mebel" Width="1.5" PointX="9.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.Plan_Pracy" Width="1.5" PointX="3.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.Pracownicy" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProdukcjaModel.Zmiany" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="ProdukcjaModel.FK_ListaMebli_Zamowienie_Mebel" ManuallyRouted="false" />
+        <AssociationConnector Association="ProdukcjaModel.FK_Zmiany_Pracownicy" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProdukcjaModel.Zamówienie" Width="1.5" PointX="10.5" PointY="1.375" />
+        <AssociationConnector Association="ProdukcjaModel.FK_BazaZamowien_Zamówienie" />
+        <AssociationConnector Association="ProdukcjaModel.FK_Zamówienie_DaneZamawiajacego" />
+        <AssociationConnector Association="ProdukcjaModel.FK_Zamówienie_ListaMebli_Zamowienie" />
+        <AssociationConnector Association="ProdukcjaModel.FK_Plan_Pracy_Zamówienie" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

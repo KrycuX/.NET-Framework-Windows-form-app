@@ -1,0 +1,27 @@
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\Fabryka Mebli IO.exe.config
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\Fabryka Mebli IO.exe
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\Fabryka Mebli IO.pdb
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.csprojAssemblyReference.cache
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Login_panel.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Properties.Resources.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.csproj.GenerateResource.cache
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.csproj.CoreCompileInputs.cache
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.exe
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.pdb
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Main_GUI.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.StwórzPlanForm.Stwórz_Plan.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.WydanieZewForm.WZ.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.WyświetlPlan.Wyswietl_Plan.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.MagazynForm.Magazyn.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\EntityFramework.dll
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\EntityFramework.SqlServer.dll
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\EntityFramework.xml
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\bin\Debug\EntityFramework.SqlServer.xml
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka Mebli IO.csproj.CopyComplete
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.StwórzPlanForm.info.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Produkcja.ProdForm.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Produkcja.DodajForm.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Produkcja.ZakonczForm.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.MagazynForm.WydanieZewForm.zapytanie.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Produkcja.Usterka.resources
+D:\Studia Programowanie\ProjektIO\Nowy folder\Fabryka Mebli IO\Fabryka Mebli IO\obj\Debug\Fabryka_Mebli_IO.Forms.Przychodzace.Zlecenia_Przychodzace.resources

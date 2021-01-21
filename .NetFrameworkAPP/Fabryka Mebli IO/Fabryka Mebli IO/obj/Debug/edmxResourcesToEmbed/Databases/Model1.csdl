@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProdukcjaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BazaZamowien">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idZamowienia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Zamówienie" Relationship="ProdukcjaModel.FK_BazaZamowien_Zamówienie" FromRole="BazaZamowien" ToRole="Zamówienie" />
+  </EntityType>
+  <EntityType Name="DaneZamawiajacego">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NrTel" Type="Int32" />
+    <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Zamówienie" Relationship="ProdukcjaModel.FK_Zamówienie_DaneZamawiajacego" FromRole="DaneZamawiajacego" ToRole="Zamówienie" />
+  </EntityType>
+  <EntityType Name="Mebel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_Produktu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ListaMebli_Zamowienie" Relationship="Self.FK_ListaMebli_Zamowienie_Mebel" FromRole="Mebel" ToRole="ListaMebli_Zamowienie" />
+  </EntityType>
+  <EntityType Name="Pracownicy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Imię" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Stanowisko" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zmiany" Type="Int32" />
+    <NavigationProperty Name="Zmiany1" Relationship="Self.FK_Zmiany_Pracownicy" FromRole="Pracownicy" ToRole="Zmiany" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Zmiany">
+    <Key>
+      <PropertyRef Name="idZmiany" />
+    </Key>
+    <Property Name="idZmiany" Type="Int32" Nullable="false" />
+    <Property Name="idKierownika" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pracownicy" Relationship="Self.FK_Zmiany_Pracownicy" FromRole="Zmiany" ToRole="Pracownicy" />
+  </EntityType>
+  <EntityType Name="ListaMebli_Zamowienie">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="idMebla" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idMebla" Type="Int32" Nullable="false" />
+    <Property Name="Kolor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Mebel" Relationship="Self.FK_ListaMebli_Zamowienie_Mebel" FromRole="ListaMebli_Zamowienie" ToRole="Mebel" />
+  </EntityType>
+  <Association Name="FK_ListaMebli_Zamowienie_Mebel">
+    <End Role="Mebel" Type="Self.Mebel" Multiplicity="1" />
+    <End Role="ListaMebli_Zamowienie" Type="Self.ListaMebli_Zamowienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mebel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ListaMebli_Zamowienie">
+        <PropertyRef Name="idMebla" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zmiany_Pracownicy">
+    <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="1" />
+    <End Role="Zmiany" Type="Self.Zmiany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pracownicy">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zmiany">
+        <PropertyRef Name="idKierownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProdukcjaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BazaZamowien" EntityType="Self.BazaZamowien" />
+    <EntitySet Name="DaneZamawiajacego" EntityType="Self.DaneZamawiajacego" />
+    <EntitySet Name="Mebel" EntityType="Self.Mebel" />
+    <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Zmiany" EntityType="Self.Zmiany" />
+    <EntitySet Name="ListaMebli_Zamowienie" EntityType="Self.ListaMebli_Zamowienie" />
+    <AssociationSet Name="FK_ListaMebli_Zamowienie_Mebel" Association="Self.FK_ListaMebli_Zamowienie_Mebel">
+      <End Role="Mebel" EntitySet="Mebel" />
+      <End Role="ListaMebli_Zamowienie" EntitySet="ListaMebli_Zamowienie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zmiany_Pracownicy" Association="Self.FK_Zmiany_Pracownicy">
+      <End Role="Pracownicy" EntitySet="Pracownicy" />
+      <End Role="Zmiany" EntitySet="Zmiany" />
+    </AssociationSet>
+    <EntitySet Name="Zamówienie" EntityType="ProdukcjaModel.Zamówienie" />
+    <AssociationSet Name="FK_BazaZamowien_Zamówienie" Association="ProdukcjaModel.FK_BazaZamowien_Zamówienie">
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+      <End Role="BazaZamowien" EntitySet="BazaZamowien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zamówienie_DaneZamawiajacego" Association="ProdukcjaModel.FK_Zamówienie_DaneZamawiajacego">
+      <End Role="DaneZamawiajacego" EntitySet="DaneZamawiajacego" />
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+    </AssociationSet>
+    <EntitySet Name="PlanPracy" EntityType="ProdukcjaModel.PlanPracy" />
+    <AssociationSet Name="FK_PlanPracy_Zamówienie" Association="ProdukcjaModel.FK_PlanPracy_Zamówienie">
+      <End Role="Zamówienie" EntitySet="Zamówienie" />
+      <End Role="PlanPracy" EntitySet="PlanPracy" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Zamówienie">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idZamawiający" Type="Int32" Nullable="false" />
+    <Property Name="idLista" Type="Int32" Nullable="false" />
+    <Property Name="DataRealizacji" Type="DateTime" Precision="0" />
+    <Property Name="wPlanie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kod_Zlecenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BazaZamowien" Relationship="ProdukcjaModel.FK_BazaZamowien_Zamówienie" FromRole="Zamówienie" ToRole="BazaZamowien" />
+    <NavigationProperty Name="DaneZamawiajacego" Relationship="ProdukcjaModel.FK_Zamówienie_DaneZamawiajacego" FromRole="Zamówienie" ToRole="DaneZamawiajacego" />
+    <NavigationProperty Name="PlanPracy" Relationship="ProdukcjaModel.FK_PlanPracy_Zamówienie" FromRole="Zamówienie" ToRole="PlanPracy" />
+  </EntityType>
+  <Association Name="FK_BazaZamowien_Zamówienie">
+    <End Type="ProdukcjaModel.Zamówienie" Role="Zamówienie" Multiplicity="1" />
+    <End Type="ProdukcjaModel.BazaZamowien" Role="BazaZamowien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamówienie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="BazaZamowien">
+        <PropertyRef Name="idZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zamówienie_DaneZamawiajacego">
+    <End Type="ProdukcjaModel.DaneZamawiajacego" Role="DaneZamawiajacego" Multiplicity="1" />
+    <End Type="ProdukcjaModel.Zamówienie" Role="Zamówienie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaneZamawiajacego">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zamówienie">
+        <PropertyRef Name="idZamawiający" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PlanPracy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idZamowienia" Type="Int32" />
+    <Property Name="idPlanu" Type="Int32" />
+    <NavigationProperty Name="Zamówienie" Relationship="ProdukcjaModel.FK_PlanPracy_Zamówienie" FromRole="PlanPracy" ToRole="Zamówienie" />
+  </EntityType>
+  <Association Name="FK_PlanPracy_Zamówienie">
+    <End Type="ProdukcjaModel.Zamówienie" Role="Zamówienie" Multiplicity="0..1" />
+    <End Type="ProdukcjaModel.PlanPracy" Role="PlanPracy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zamówienie">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PlanPracy">
+        <PropertyRef Name="idZamowienia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
